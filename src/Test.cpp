@@ -7,15 +7,17 @@
 #include <random>
 #include <math.h>
 
+using namespace arma;
+
 struct my_constraint_data
 {
   double a;
   double b;
 };
 
-double myvfunc(const std::vector<double> &x, std::vector<double> &grad, void *my_func_data)
+double myvfunc(unsigned n, const double *x, double *grad, void *my_func_data)
 {
-  if (!grad.empty()) {
+  if (grad) {
     grad[0] = 0.0;
     grad[1] = 0.5 / sqrt(x[1]);
   }
@@ -44,8 +46,8 @@ double test()
   opt.set_lower_bounds(lb);
   opt.set_min_objective(myvfunc, NULL);
   my_constraint_data data[2] = { {2,0}, {-1,1} };
-  opt.add_inequality_constraint(myvconstraint, &data[0], 1e-8);
-  opt.add_inequality_constraint(myvconstraint, &data[1], 1e-8);
+//  opt.add_inequality_constraint(myvconstraint, &data[0], 1e-8);
+//  opt.add_inequality_constraint(myvconstraint, &data[1], 1e-8);
 
   opt.set_xtol_rel(1e-4);
   std::vector<double> x(2);
@@ -57,3 +59,4 @@ double test()
   Rcpp::Rcout << x[0] << "," << x[1] << "\n";
   return minf;
 }
+

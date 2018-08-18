@@ -1,5 +1,5 @@
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, evalCpp)
-useDynLib(nloptCppTest, .registration = TRUE)
+useDynLib(nloptCppTest)
 
 export(test)

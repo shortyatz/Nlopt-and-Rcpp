@@ -16,20 +16,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_hello
-List rcpp_hello();
-RcppExport SEXP _nloptCppTest_rcpp_hello() {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello());
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_nloptCppTest_test", (DL_FUNC) &_nloptCppTest_test, 0},
-    {"_nloptCppTest_rcpp_hello", (DL_FUNC) &_nloptCppTest_rcpp_hello, 0},
     {NULL, NULL, 0}
 };
 

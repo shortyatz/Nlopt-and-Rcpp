@@ -2,10 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 test <- function() {
-    .Call(`_nloptCppTest_test`)
-}
-
-rcpp_hello <- function() {
-    .Call(`_nloptCppTest_rcpp_hello`)
+    .Call('_nloptCppTest_test', PACKAGE = 'nloptCppTest')
 }
 
